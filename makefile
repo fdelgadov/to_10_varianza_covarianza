@@ -1,4 +1,3 @@
-java: Main.class
-	java Main
-Main.class: *.java
+java:
 	javac Main.java
+	java Main

@@ -20,6 +20,7 @@ public class Y extends X {
   */
 
   // No puede hacer override
+  // Contravarianza en return no soportada
   // Error:
 /*
 javac Main.java
@@ -58,7 +59,7 @@ javac Main.java
 
   // No hace override
   // X::foo()
-  /*
+  ///*
   //@Override
   public B foo(A p){
     System.out.println("Y::foo()");
@@ -66,7 +67,7 @@ javac Main.java
     
     return null;
   }
-  */
+  //*/
   
   // No hace override
   // X::foo() y Y::foo()
@@ -84,7 +85,7 @@ javac Main.java
   
   // No hace override
   // X::foo()
-  ///*
+  /*
   //@Override
   public A foo(A p){
     System.out.println("Y::foo()");
@@ -92,5 +93,15 @@ javac Main.java
     
     return null;
   }
-  //*/
+  */
+
+  // Conclusión
+  // No es posible aplicar covarianza y contravarianza en el parámetro, ya que
+  // no redefine la función X::foo()
+  //
+  // Es posible hacer covarianza en el return, ya que Y::foo() retorna C,
+  // X::foo() retorna B y C es subtipo de B.
+  //
+  // No es posible hacer contravarianza en el return, ya que A no es subtipo de
+  // B
 }
