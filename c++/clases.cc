@@ -10,6 +10,18 @@ B* X::foo(B& p){
   return NULL;
 }
 
+// X::foo() y Y::foo()
+///*
+B* Y::foo(B& p){
+  printf("Y::foo()\n");
+  p.aa();
+  p.ba();
+  
+  return NULL;
+}
+//*/
+
+
 // Covarianza en retorno soportada
 /*
 C* Y::foo(B& p){
@@ -54,7 +66,8 @@ clases.h:13:6: error: ‘B* Y::foo(C&)’ marked ‘override’, but does not ov
       |      ^~~
 make: *** [makefile:8: clases.o] Error 1
 */
-///*
+//X::foo() y Y::foo()
+/*
 B* Y::foo(C& p){
   printf("Y::foo()\n");
   p.aa();
@@ -63,4 +76,27 @@ B* Y::foo(C& p){
   
   return NULL;
 }
-//*/
+*/
+
+// No hace override
+// X::foo() y Y::foo()
+/*
+B* Y::foo(A& p){
+  printf("Y::foo()\n");
+  p.aa();
+  
+  return NULL;
+}
+*/
+
+// No hace override
+/*
+C* Y::foo(C& p){
+  printf("Y::foo()\n");
+  p.aa();
+  p.ba();
+  p.ca();
+  
+  return NULL;
+}
+*/
